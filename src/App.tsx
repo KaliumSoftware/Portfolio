@@ -3,7 +3,7 @@ function App() {
     <div>
       <h1>Kalium Software</h1>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
