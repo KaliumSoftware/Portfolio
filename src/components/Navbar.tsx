@@ -3,7 +3,7 @@ import logoWhite from '../assets/logos/logo-black-nobg.png'
 import logoDark from '../assets/logos/logo-white-nobg.png'
 import { BsSunFill } from 'react-icons/bs'
 import { BsFillMoonFill } from 'react-icons/bs'
-
+import { Theme } from '../utils/Types'
 //hooks
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
@@ -29,7 +29,7 @@ export default function Nav() {
   const location = useLocation()
 
   const dispatch = useDispatch()
-  const theme = useSelector((state) => state.theme)
+  const theme = useSelector((state: { theme: Theme }) => state.theme)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {

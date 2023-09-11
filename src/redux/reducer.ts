@@ -1,10 +1,14 @@
+//types
+import { AppState, Action } from '../utils/Types'
+//actions-types
 import { SET_THEME } from './actions/action-types'
 
-const initialState = {
+const initialState: AppState = {
   theme: 'dark',
 }
 
-const reducer = (state = initialState, { type, payload }) => {
+const reducer = (state = initialState, action: Action) => {
+  const { type, payload } = action
   switch (type) {
     case SET_THEME:
       return {

@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux'
 import { Button } from '@nextui-org/react'
-
+import { Theme } from '../../utils/Types'
 function SectionSlogan() {
-  const theme = useSelector((state) => state.theme)
+  const theme: string = useSelector((state: { theme: Theme }) => state.theme)
 
   return (
-    <section className='flex flex-col justify-center pb-24 gap-16 items-center min-h-screen'>
+    <section className='flex flex-col justify-center pb-24 gap-16 items-center min-h-[80vh]'>
       <h3
         className={
           theme === 'dark'
