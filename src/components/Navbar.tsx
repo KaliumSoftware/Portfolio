@@ -1,5 +1,5 @@
 //assets
-import logoWhite from '../assets/logos/logo-black-nobg.png'
+import logoWhite from '../assets/logos/logo_yellow_pixel_perfect-font-white.jpg'
 import logoDark from '../assets/logos/logo-white-nobg.png'
 import { BsSunFill } from 'react-icons/bs'
 import { BsFillMoonFill } from 'react-icons/bs'
@@ -148,7 +148,7 @@ export default function Nav() {
       </NavbarContent>
       <NavbarContent className='sm:flex gap-4' justify='end'>
         <NavbarItem>
-          <Button className='hidden sm:inline-block text-white bg-gradient-to-t from-[#5d2671] to-pink-800'>
+          <Button className='hidden sm:inline-block text-black bg-yellowGamer'>
             Contact
           </Button>
         </NavbarItem>
