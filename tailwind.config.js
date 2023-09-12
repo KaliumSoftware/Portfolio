@@ -8,7 +8,16 @@ export default {
   ],
   darkMode: 'class',
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        yellowGamer: '#f2c510',
+      },
+      gradientColorStops: {
+        yellowLight: '#FDF119',
+        yellowSemi: '#FDBF19',
+        yellowDark: '#FDBA19',
+      },
+    },
   },
   plugins: [nextui()],
 }
