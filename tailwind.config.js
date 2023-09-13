@@ -10,12 +10,16 @@ export default {
   theme: {
     extend: {
       colors: {
+        white: '#f9f9f9',
         yellowGamer: '#f2c510',
       },
       gradientColorStops: {
         yellowLight: '#FDF119',
         yellowSemi: '#FDBF19',
         yellowDark: '#FDBA19',
+      },
+      animation: {
+        'spin-slow': 'pulse 2s linear infinite',
       },
     },
   },
