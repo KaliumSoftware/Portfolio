@@ -1,12 +1,20 @@
-import SectionIllustration from '../components/home-sections/SectionIllustration'
-import SectionSlogan from '../components/home-sections/SectionSlogan'
+//sliders
+import FirstSlider from '../components/first-slider/First'
+import ServicesSlider from '../components/services-slider/ServicesSlider'
+//components
+import Navbar from '../components/Navbar'
+
+//intersection
 
 function Home() {
   return (
-    <div className='py-8 min-h-[90vh] flex items-start md:items-center '>
-      <main className=' md:pt-0 flex flex-col justify-center items-center  md:flex-row md:justify-around md:items-center md:gap-12'>
-        <SectionSlogan />
-        <SectionIllustration />
+    <div className='flex flex-col items-start md:items-center '>
+      <header className='w-full'>
+        <Navbar />
+      </header>
+      <main>
+        <FirstSlider />
+        <ServicesSlider />
       </main>
     </div>
   )
