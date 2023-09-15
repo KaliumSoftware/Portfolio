@@ -1,6 +1,6 @@
 //assets
-import logoWhite from '../assets/logos/logo_yellow_pixel_perfect-font-white.jpg'
-import logoDark from '../assets/logos/logo-white-nobg.png'
+import logoWhite from '../assets/logos/Logo_yellow_pixel_perfect-png-white.png'
+import logoDark from '../assets/logos/logo_yellow_pixel_perfect-font-black.jpg'
 import { BsSunFill } from 'react-icons/bs'
 import { BsFillMoonFill } from 'react-icons/bs'
 import { Theme } from '../utils/Types'
