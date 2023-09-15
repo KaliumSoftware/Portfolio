@@ -43,7 +43,7 @@ function Slogan() {
   return (
     <div
       className={
-        'z-40 flex flex-col justify-center items-center md:h-1/2 md:w-1/3 gap-8'
+        'flex flex-col justify-center items-center md:h-1/2 md:w-1/3 gap-8'
       }
     >
       <h3
