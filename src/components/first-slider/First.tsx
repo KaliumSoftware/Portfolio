@@ -5,11 +5,18 @@ import Illustration from '../../components/first-slider/Illustration'
 //intersection
 import { InView } from 'react-intersection-observer'
 import { motion } from 'framer-motion'
-const FirstSlider = () => {
+const FirstSlider = ({
+  myRef,
+}: {
+  myRef: React.MutableRefObject<HTMLDivElement>
+}) => {
   const screenSmall = window.innerWidth < 768
   return (
     <section className=' min:h-screen md:h-screen flex flex-col md:items-center '>
-      <div className='h-[90vh] flex justify-center items-center  md-h:1/2 md:flex-row md:justify-around md:items-center md:gap-12'>
+      <div
+        ref={myRef}
+        className='h-[90vh] flex justify-center items-center  md-h:1/2 md:flex-row md:justify-around md:items-center md:gap-12'
+      >
         <Slogan />
         <Illustration />
       </div>

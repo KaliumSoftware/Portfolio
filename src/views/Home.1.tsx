@@ -1,12 +1,9 @@
-//sliders
 import FirstSlider from '../components/first-slider/First'
 import ServicesSlider from '../components/services-slider/ServicesSlider'
-//components
 import Navbar from '../components/Navbar'
-
-//intersection
 import { useInView } from 'react-intersection-observer'
-function Home() {
+
+export function Home() {
   const { ref: myRef, inView: firstObserver } = useInView()
   const { ref: myRef2, inView: secondObserver } = useInView()
   const { ref: myRef3, inView: thirdObserver } = useInView()
@@ -26,5 +23,3 @@ function Home() {
     </div>
   )
 }
-
-export default Home

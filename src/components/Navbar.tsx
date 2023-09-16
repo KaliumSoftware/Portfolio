@@ -1,11 +1,11 @@
 //assets
 import logoWhite from '../assets/logos/Logo_yellow_pixel_perfect-png-white.png'
-import logoDark from '../assets/logos/logo_yellow_pixel_perfect-font-black.jpg'
+import logoDark from '../assets/logos/logo-white-nobg.png'
 import { BsSunFill } from 'react-icons/bs'
 import { BsFillMoonFill } from 'react-icons/bs'
 import { Theme } from '../utils/Types'
 //hooks
-import { Link } from 'react-router-dom'
+
 import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -19,19 +19,35 @@ import {
   NavbarMenu,
   NavbarItem,
   Button,
+  Link,
 } from '@nextui-org/react'
 
 const goTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
-
-export default function Nav() {
+export default function Nav({ firstObserver, secondObserver, thirdObserver }) {
   const location = useLocation()
-
   const dispatch = useDispatch()
   const theme = useSelector((state: { theme: Theme }) => state.theme)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
 
+  const colorLink =
+    theme === 'dark'
+      ? scrolled
+        ? 'text-black'
+        : 'text-white'
+      : scrolled
+      ? 'text-white'
+      : 'text-black'
+
+  const colorLinkHover = firstObserver
+    ? 'hover:text-yellowGamer'
+    : secondObserver
+    ? 'hover:text-yellowGamer'
+    : thirdObserver
+    ? 'hover:text-pink-400'
+    : 'hover:text-yellowGamer'
   useEffect(() => {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark')
@@ -39,6 +55,22 @@ export default function Nav() {
       document.documentElement.classList.remove('dark')
     }
   }, [theme])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScrolled(true)
+      } else {
+        setScrolled(false)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
   const handleThemeChange = () => {
     dispatch(setTheme(theme === 'dark' ? 'light' : 'dark'))
@@ -56,7 +88,13 @@ export default function Nav() {
   return (
     <Navbar
       className={
-        theme === 'dark' ? 'bg-black text-white/80' : 'bg-white text-black'
+        theme === 'dark'
+          ? scrolled
+            ? 'fixed bg-white/50 bg-opacity-50 transition-colors'
+            : 'fixed bg-black'
+          : scrolled
+          ? 'fixed bg-black bg-opacity-50 transition-colors'
+          : 'fixed bg-white'
       }
       onMenuOpenChange={setIsMenuOpen}
     >
@@ -66,12 +104,20 @@ export default function Nav() {
             <button onClick={goTop}>
               <img
                 className='w-24'
-                src={theme === 'dark' ? logoWhite : logoDark}
+                src={
+                  theme === 'dark'
+                    ? scrolled
+                      ? logoDark
+                      : logoWhite
+                    : scrolled
+                    ? logoWhite
+                    : logoDark
+                }
                 alt='Kalium'
               />
             </button>
           ) : (
-            <Link to={'/'}>
+            <Link className={`${colorLinkHover} font-bold`} href='/'>
               <img
                 className='w-24'
                 src={theme === 'dark' ? logoWhite : logoDark}
@@ -86,14 +132,18 @@ export default function Nav() {
         <NavbarItem isActive></NavbarItem>
         <NavbarItem>
           {location.pathname === '/services' ? (
-            <Link to='/services' className='text-blue-500' aria-current='page'>
+            <Link
+              className={`${colorLink} ${colorLinkHover} font-bold`}
+              href='/services'
+              aria-current='page'
+            >
               Services
             </Link>
           ) : (
             <Link
-              to='/services'
+              className={`${colorLink} ${colorLinkHover} font-bold`}
+              href='/services'
               aria-current='page'
-              className='hover:text-white/60'
             >
               Services
             </Link>
@@ -101,14 +151,18 @@ export default function Nav() {
         </NavbarItem>
         <NavbarItem>
           {location.pathname === '/projects' ? (
-            <Link to='/projects' className='text-blue-500' aria-current='page'>
+            <Link
+              className={`${colorLink} ${colorLinkHover} font-bold`}
+              href='/projects'
+              aria-current='page'
+            >
               Projects
             </Link>
           ) : (
             <Link
-              to='/projects'
+              className={`${colorLink} ${colorLinkHover} font-bold`}
+              href='/projects'
               aria-current='page'
-              className='hover:text-white/60'
             >
               Projects
             </Link>
@@ -117,14 +171,18 @@ export default function Nav() {
 
         <NavbarItem isActive>
           {location.pathname === '/about' ? (
-            <Link to='/about' className='text-blue-500' aria-current='page'>
+            <Link
+              className={`${colorLink} ${colorLinkHover} font-bold`}
+              href='/about'
+              aria-current='page'
+            >
               About Us
             </Link>
           ) : (
             <Link
-              to='/about'
+              className={`${colorLink} ${colorLinkHover} font-bold`}
+              href='/about'
               aria-current='page'
-              className='hover:text-white/60'
             >
               About Us
             </Link>
@@ -132,14 +190,18 @@ export default function Nav() {
         </NavbarItem>
         <NavbarItem isActive>
           {location.pathname === '/team' ? (
-            <Link to='/team' className='text-blue-500' aria-current='page'>
+            <Link
+              className={`${colorLink} ${colorLinkHover} font-bold`}
+              href='/team'
+              aria-current='page'
+            >
               Kalium Team
             </Link>
           ) : (
             <Link
-              to='/team'
+              className={`${colorLink} ${colorLinkHover} font-bold`}
+              href='/team'
               aria-current='page'
-              className='hover:text-white/60'
             >
               Kalium Team
             </Link>
@@ -162,9 +224,9 @@ export default function Nav() {
             }
           >
             {theme === 'dark' ? (
-              <BsSunFill size={24} />
+              <BsSunFill color={scrolled ? 'black' : 'white'} size={24} />
             ) : (
-              <BsFillMoonFill size={24} />
+              <BsFillMoonFill color={scrolled ? 'white' : 'black'} size={24} />
             )}
           </button>
         </NavbarItem>
@@ -184,6 +246,7 @@ export default function Nav() {
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
             <Link
+              className={`${colorLink} ${colorLinkHover} font-bold`}
               color={
                 index === 2
                   ? 'primary'
@@ -191,8 +254,7 @@ export default function Nav() {
                   ? 'danger'
                   : 'foreground'
               }
-              className='w-full'
-              to={item.href}
+              href={item.href}
             >
               {item.label}
             </Link>

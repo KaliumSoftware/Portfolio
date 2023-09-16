@@ -26,7 +26,11 @@ const services = [
   },
 ]
 
-function ServicesSlider() {
+function ServicesSlider({
+  myRef3,
+}: {
+  myRef3: React.MutableRefObject<HTMLDivElement>
+}) {
   return (
     <InView className='h-screen border-t-4' threshold={0.25}>
       {({ ref, inView }) => (
@@ -40,7 +44,7 @@ function ServicesSlider() {
           <h4 className='py-16 text-center font-semibold text-3xl'>
             Nuestros <span>Servicios</span> más solicitados
           </h4>
-          <div className='flex flex-col gap-12 p-4'>
+          <div ref={myRef3} className='flex flex-col gap-12 p-4'>
             {services.map((service, index) => (
               <CardServices
                 key={index}
